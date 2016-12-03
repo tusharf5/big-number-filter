@@ -62,14 +62,12 @@
         // rounder is the number we multiply our answer with to get proper offset
         var rounder = Math.pow(10, offset);
         var key = '';
+        // default language is english
+        var POWER_MAP = POWER_MAP_EN;
 
         // assigning language maps
-        if (options.lang && options.lang == 'en') {
-            var POWER_MAP = POWER_MAP_EN;
-        }
-
         if (options.lang && options.lang == 'jp') {
-            var POWER_MAP = POWER_MAP_JP;
+            POWER_MAP = POWER_MAP_JP;
         }
 
         // checking from highest number and stopping when num/highest >= 1

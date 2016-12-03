@@ -1,9 +1,6 @@
 ((window, define) => {
     define(['angular'], angular => {
 
-        BigNumberFilter.$inject = ['$window'];
-        return BigNumberFilter;
-
         var POWER_MAP_EN = [{
             key: 'Q',
             value: Math.pow(10, 15)
@@ -37,6 +34,8 @@
             value: 1000
         }];
 
+        return BigNumberFilter;
+
         function BigNumberFilter(number, options) {
 
             // If the passed number is falsy return undefined
@@ -66,14 +65,12 @@
             // rounder is the number we multiply our answer with to get proper offset
             var rounder = Math.pow(10, offset);
             var key = '';
+            // default language is english
+            var POWER_MAP = POWER_MAP_EN;
 
             // assigning language maps
-            if (options.lang && options.lang == 'en') {
-                var POWER_MAP = POWER_MAP_EN;
-            }
-
             if (options.lang && options.lang == 'jp') {
-                var POWER_MAP = POWER_MAP_JP;
+                POWER_MAP = POWER_MAP_JP;
             }
 
             // checking from highest number and stopping when num/highest >= 1
@@ -97,7 +94,6 @@
                 if (obj.hasOwnProperty(prop))
                     return false;
             }
-
             return true;
         }
 
